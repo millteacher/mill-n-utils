@@ -1,5 +1,9 @@
 var min=require('../index');
-min.fs.writeJSON('test.json',{
-	"mill":19,
-	"name":"333"
+
+var aaa={};
+min.eventBind(aaa);
+aaa.on('done',function (name,age) {
+	console.log("name:%s;age:%d;",name,age);
 });
+
+aaa.emit('done',"mill",29)
