@@ -6,3 +6,23 @@
 ```
 npm install mill-n-utils --save-dev
 ```
+#### 继承事件处理对象
+
+```
+var min=require('../index');
+
+var temp={};
+min.eventBind(temp);
+temp.on('done',function (name,age) {
+	console.log("name:%s;age:%d;",name,age);
+});
+
+temp.emit('done',"mill",29)
+```
+
+#### 变量的命名
+支持大写命名up、驼峰命名tf、pascal命名和下划线xhx命名
+```
+var name=min.doName.up('get an apple');
+console.log(name);//GET_AN_APPLE
+```
