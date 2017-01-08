@@ -26,3 +26,14 @@ temp.emit('done',"mill",29)
 var name=min.doName.up('get an apple');
 console.log(name);//GET_AN_APPLE
 ```
+
+#### 接收控制台参数
+```
+var option=min.mist();
+console.log(option.mill);
+```
+控制台输入
+```
+$node testmist.js --mill aaa
+> aaa
+```
