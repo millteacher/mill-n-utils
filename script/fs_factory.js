@@ -9,27 +9,45 @@ var sfs = editor.create(store);
 var msf={};
  msf.fs={};
  msf.ejs={};
+ msf.mfs={};
  evu.bind(msf.fs);
 
 
 //封装util也就是工具类，之后我们的逻辑就直接依赖自己的模块
 module.exports=function  () {
-	msf.fs.write=function  (filepath, contents,callback) {
+	msf.mfs.write=function  (filepath, contents,callback) {
 		var result= sfs.write(filepath, contents);
 		sfs.commit(callback||function  () {
 			msf.fs.emit('write-done');
 		});
 	};
 
-	msf.fs.writeJSON=function(filepath, contents) {
+	msf.mfs.writeJSON=function(filepath, contents) {
 		var result= sfs.writeJSON(filepath, contents);
 		sfs.commit(function  () {
 			msf.fs.emit('write-json-done');
 		});
 	};
-	//实现对sfs模块有选择性的克隆,其中两个写方法，因为要代入自己的逻辑，所以在这里进行排除
+	msf.mfs.copy=function(filepath, newPath) {
+		var result= sfs.copy(filepath, newPath);
+		sfs.commit(function  () {
+			msf.fs.emit('copy-done');
+		});
+	};
+	msf.mfs.delete=function(filepath) {
+		var result= sfs.delete(filepath);
+		sfs.commit(function  () {
+			msf.fs.emit('delete-done');
+		});
+	};
+	msf.mfs.copyTpl=function(filepath, newPath,options) {
+		var result= sfs.copyTpl(filepath, newPath,options);
+		sfs.commit(function  () {
+			msf.fs.emit('copy-done');
+		});
+	};
+	//实现对sfs模块有选择性的克隆
 	for (var i in sfs) {
-		if(i!='writeJSON'&&i!='write')
 		msf.fs[i]=sfs[i];
 	};
 
