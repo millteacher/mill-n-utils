@@ -52,7 +52,7 @@ module.exports=function  () {
 	};
 
 	//加入ejs的渲染功能
-	msf.ejs.render=ejs.render;
+	msf.ejs=ejs;
 
 	return msf;
 }

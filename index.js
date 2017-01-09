@@ -6,6 +6,7 @@ var mist=require("./script/minimist_util");
 
 exports.fs=mfs.fs;
 exports.ejs=mfs.ejs;
+exports.mfs=mfs.mfs;
 exports.wdep=dep.writeDep;
 exports.eventBind=eve.bind;
 exports.doName=doName;
