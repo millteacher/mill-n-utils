@@ -1,6 +1,6 @@
 {
   "name": "mill-n-utils",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "about node util of my usage",
   "main": "index.js",
   "scripts": {
