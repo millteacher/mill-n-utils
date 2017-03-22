@@ -37,3 +37,100 @@ console.log(option.mill);
 $node testmist.js --mill aaa
 > aaa
 ```
+
+#### 写出文件
+```
+var min=require('../index');
+var path=require('path');
+
+describe("写出JSON文件成功",function  () {
+	var file=path.resolve(__dirname,"./test.json");
+	beforeAll(function  () {
+	
+		min.fs.writeJSON(file,{
+			"name":"mill",
+			"age" :30
+		});
+		min.fs.copy(
+			file,"./test1.json"
+		);
+	
+	}) ;
+	afterAll(function  () {
+		min.fs.delete(file);
+		min.fs.commit(function  () {
+			
+		});
+	}) ;
+	it("文件存在",function  () {
+		expect(min.fs.exists(file)).toBe(true);
+		expect(min.fs.exists("./test1.json")).toBe(true);
+	});
+});
+
+```
+
+#### excel转成markdown的表格
+```
+var min=require('../index');
+
+var excelStr=`
+
+编码	父级	说明		响应格式
+data		数据集合		List<BusSupplierInfo> json格式
+supplierId	data	供应商id		Long
+storeId	data	店铺id		Long
+supplierCode	data	供应商简码		Long
+supplierName	data	供应商名称		String
+
+
+
+
+`;
+var name=min.excel2table(excelStr);
+console.log(name);
+```
+
+#### excel转成json
+```
+var min=require('../index');
+
+var excelStr=`
+
+编码	父级	说明		响应格式
+data		数据集合		List<BusSupplierInfo> json格式
+supplierId	data	供应商id		Long
+storeId	data	店铺id		Long
+supplierCode	data	供应商简码		Long
+supplierName	data	供应商名称		String
+
+`;
+var name=min.excel2json(excelStr);
+console.log(name);
+```
+
+#### base64的编码和解码
+```
+var min=require('../index');
+
+let temp=min.base64.encode('mill');
+console.log('encode',temp);
+
+temp=min.base64.decode(temp);
+console.log('decode',temp);
+
+temp=min.base64.encodeHex(temp);
+console.log('encodeHex',temp);
+
+temp=min.base64.decodeHex(temp);
+console.log('decodeHex',temp);
+```
+
+#### 日期格式化
+```
+var min=require('../index');
+
+let temp=min.dateFormat(new Date(),"yyyy-MM-dd hh:mm:ss");
+
+console.log(temp);
+```
