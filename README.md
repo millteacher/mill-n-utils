@@ -133,4 +133,14 @@ var min=require('../index');
 let temp=min.dateFormat(new Date(),"yyyy-MM-dd hh:mm:ss");
 
 console.log(temp);
+
+
+```
+#### 日期解析
+> 将格式化的字符串解析成为一个时间对象
+2017-12-22 00:00:00或者2017-12-22这样的格式都可以
+```
+let index=require('../index.js');
+	let date=	index.dateParse('2017-12-22 00:00:00');
+	console.log(index.dateFormat(date,"yyyy-MM-dd hh:mm:ss"));
 ```

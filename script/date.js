@@ -18,5 +18,20 @@ function dateFormat(date,fmt) {
 }
 
 exports.dateFormat=dateFormat;
+exports.parseStr=parseStr;
 
+
+function parseStr(str) {
+    var i=1;
+    var subStr=str.split(" ");
+    var dtArr = (subStr[0]).split("-");
+    var mdtArr=subStr[1]?(subStr[1]).split(":"):[];
+    if(!mdtArr||mdtArr.length==0){
+        mdtArr=[0,0,0];
+    }
+    var stateDate=new Date(dtArr[0], dtArr[1], dtArr[2],mdtArr[0],mdtArr[1],mdtArr[2]);
+    var month=stateDate.getMonth()+i-2; //得到月份
+    stateDate.setMonth(month);
+    return stateDate;
+}
 // console.warn(dateFormat(new Date(),"yyyy-MM-dd hh:mm:ss"));

@@ -20,4 +20,5 @@ exports.js2table=js2mdTable.js2mdTable;
 exports.excel2table=js2mdTable.excel2mdTable;
 exports.base64=base64;
 exports.dateFormat=dateutil.dateFormat;
+exports.dateParse=dateutil.parseStr;
 
