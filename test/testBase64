@@ -1,0 +1,13 @@
+var min=require('../index');
+
+let temp=min.base64.encode('mill');
+console.log('encode',temp);
+
+temp=min.base64.decode(temp);
+console.log('decode',temp);
+
+temp=min.base64.encodeHex(temp);
+console.log('encodeHex',temp);
+
+temp=min.base64.decodeHex(temp);
+console.log('decodeHex',temp);
